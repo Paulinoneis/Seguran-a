@@ -3,53 +3,66 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Landing Page</title>
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://apis.google.com">
+    <title>Landing Page Simples</title>
     <style>
+        /* Estilos Globais */
         body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
+            font-family: Arial, sans-serif; /* Fonte simples */
+            background-color: #f0f0f0; /* Cor de fundo clara */
             margin: 0;
             padding: 20px;
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh;
+            height: 100vh; /* Altura da tela */
         }
+
+        /* Container do Formulário */
         .form-container {
-            background: white;
+            background-color: #fff; /* Fundo branco */
             padding: 20px;
-            border-radius: 5px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            width: 300px;
+            border-radius: 5px; /* Bordas arredondadas */
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Sombra leve */
+            width: 300px; /* Largura fixa */
         }
+
+        /* Estilos do Título */
         h2 {
-            text-align: center;
-            color: #333;
+            text-align: center; /* Centraliza o texto */
+            color: #333; /* Cor do texto escuro */
         }
-        input[type="text"], input[type="email"] {
-            width: 100%;
-            padding: 10px;
-            margin: 10px 0;
-            border: 1px solid #ccc;
-            border-radius: 5px;
+
+        /* Estilos dos Campos de Entrada */
+        input[type="text"],
+        input[type="email"] {
+            width: 100%; /* Largura total do container */
+            padding: 10px; /* Espaçamento interno */
+            margin: 10px 0; /* Margem superior e inferior */
+            border: 1px solid #ccc; /* Borda cinza */
+            border-radius: 5px; /* Bordas arredondadas */
         }
+
+        /* Estilo do Botão */
         input[type="submit"] {
-            background-color: #28a745;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            padding: 10px;
-            cursor: pointer;
-            width: 100%;
+            background-color: #28a745; /* Cor verde */
+            color: #fff; /* Texto branco */
+            border: none; /* Sem borda */
+            border-radius: 5px; /* Bordas arredondadas */
+            padding: 10px; /* Espaçamento interno */
+            cursor: pointer; /* Muda o cursor ao passar sobre o botão */
+            width: 100%; /* Largura total */
         }
+
+        /* Efeito ao passar o mouse sobre o botão */
         input[type="submit"]:hover {
-            background-color: #218838;
+            background-color: #218838; /* Verde mais escuro */
         }
+
+        /* Estilo de Mensagem de Erro */
         .error {
-            color: red;
-            font-size: 0.8em;
-            margin: 5px 0;
+            color: red; /* Cor da mensagem de erro */
+            font-size: 0.8em; /* Tamanho pequeno */
+            margin: 5px 0; /* Margem superior e inferior */
         }
     </style>
 </head>
@@ -66,9 +79,10 @@
     </div>
 
     <script>
+        // Adiciona um evento ao formulário para validar os dados
         document.getElementById('signupForm').addEventListener('submit', function(event) {
-            event.preventDefault();
-            let valid = true;
+            event.preventDefault(); // Impede o envio do formulário
+            let valid = true; // Variável para controle de validação
 
             // Limpar mensagens de erro
             document.getElementById('nameError').textContent = '';
@@ -83,19 +97,15 @@
 
             // Validação do Email
             const email = document.getElementById('email').value;
-            const emailPattern = /^[^@\s]+@[^@\s]+\.[^@\s]+$/;
+            const emailPattern = /^[^@\s]+@[^@\s]+\.[^@\s]+$/; // Regex para validar email
             if (!emailPattern.test(email)) {
                 document.getElementById('emailError').textContent = 'Insira um email válido.';
                 valid = false;
             }
 
             if (valid) {
-                // Configurar cookie com segurança
-                document.cookie = `name=${encodeURIComponent(name)}; path=/; secure; HttpOnly; SameSite=Strict`;
-                document.cookie = `email=${encodeURIComponent(email)}; path=/; secure; HttpOnly; SameSite=Strict`;
-                alert('Formulário enviado com sucesso!');
-                // Limpar o formulário
-                document.getElementById('signupForm').reset();
+                alert('Formulário enviado com sucesso!'); // Alerta de sucesso
+                document.getElementById('signupForm').reset(); // Limpa o formulário
             }
         });
     </script>
